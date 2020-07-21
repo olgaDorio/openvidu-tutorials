@@ -61,14 +61,10 @@ function joinSession() {
 				// --- 6) Get your own camera stream with the desired properties ---
 
 				var publisher = OV.initPublisher('video-container', {
-					audioSource: undefined, // The source of audio. If undefined default microphone
-					videoSource: undefined, // The source of video. If undefined default webcam
-					publishAudio: true,  	// Whether you want to start publishing with your audio unmuted or not
-					publishVideo: true,  	// Whether you want to start publishing with your video enabled or not
-					resolution: '640x480',  // The resolution of your video
-					frameRate: 30,			// The frame rate of your video
-					insertMode: 'APPEND',	// How the video is inserted in the target element 'video-container'	
-					mirror: false       	// Whether to mirror your local video or not
+					audioSource: 'blahblahblah',
+					videoSource: false,
+					publishAudio: true,
+					publishVideo: false,
 				});
 
 				// --- 7) Specify the actions when events take place in our publisher ---
@@ -97,7 +93,7 @@ function leaveSession() {
 
 	session.disconnect();
 
-	// Removing all HTML elements with user's nicknames. 
+	// Removing all HTML elements with user's nicknames.
 	// HTML videos are automatically removed when leaving a Session
 	removeAllUserData();
 
@@ -186,7 +182,7 @@ function initMainVideo(videoElement, userData) {
  *   3) The token must be consumed in Session.connect() method
  */
 
-var OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
+var OPENVIDU_SERVER_URL = "https://localhost:4443";
 var OPENVIDU_SERVER_SECRET = "MY_SECRET";
 
 function getToken(mySessionId) {
